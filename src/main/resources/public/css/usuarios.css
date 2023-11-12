@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+.containerUsuarios{
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.usuario {
+    display: flex;
+    background-color: #fff;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.usuario img {
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 20px;
+}
+
+.usuario-detalles {
+    flex: 1;
+}
+
+.usuario-detalles h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.usuario-detalles p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.tags {
+    margin-top: 10px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 4px 8px;
+    margin-right: 8px;
+    background-color: #0b4459;
+    color: #fff;
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+.contenedor {
+    position: relative;
+    display: inline-block;
+}
+.close-button {
+    background-color: #0093d7;
+    color: #fff;
+    border: none;
+    padding: 35px 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+    background-color: #0b4459;
+}
+
+.mensaje {
+    width: 80px;
+    display: none;
+    background-color: #d0d0d0;
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    margin-right: 10px;
+    z-index: 1;
+}
+
+.close-button:hover + .mensaje {
+    display: block;
+}

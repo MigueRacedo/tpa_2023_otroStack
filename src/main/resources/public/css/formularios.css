@@ -1,0 +1,213 @@
+.container-formulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+.area-cancelar{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+.modal-overlay {
+    margin-top: 80px;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    margin-top: 130px;
+    margin-left: 30%;
+    margin-right: 30%;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    width: 40%;
+    height:350px;
+    display: block;
+
+}
+.modal h2 {
+    margin-top: 0;
+    color:#444444;
+}
+.modal h1 {
+    font-size: 20px;
+}
+.modal form {
+    display: flex;
+    flex-direction: column;
+}
+.modal label,
+.modal input {
+    color: #444444;
+    margin-bottom: 10px;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.register-modal {
+    margin-top: 50px;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    width: 50%;
+    height: 600px;
+    display: block;
+
+}
+.register-modal h2 {
+    margin-top: 0;
+    color: #444444;
+
+}
+.register-modal form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.register-modal label{
+    margin-bottom: 10px;
+    display: flex;
+    color: #444444;
+}
+.register-modal input {
+    color: #444444;
+
+    display:flex;
+    margin-bottom: 10px;
+    width: 90%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: normal;
+}
+form {
+    display: inline-block;
+    justify-content: space-between;
+}
+.contenedor{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.columna1,
+.columna2 {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 0px) and (max-width: 768px) { 
+    .register-modal {
+        margin-top: 50px;
+        background-color: #ffffff;
+        padding: 15px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+        width: 80%;
+        height: 570px;
+        display: block;
+    
+    }
+    .register-modal h2 {
+        margin-top: 0;
+        color: #444444;
+        font-size: 1rem;
+        text-align: center;
+    }
+    .contenedor{
+        display: inline-block;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    .columna1,
+    .columna2 {
+        display: inline-block;
+        width:70%;
+        margin-left: 60px;
+    }
+    .register-modal input {
+        color: #444444;
+    
+        display:flex;
+        margin-bottom: 5px;
+        width: 80%;
+        padding: 0px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: normal;
+    }
+    .register-modal label{
+        margin-bottom: 5px;
+        display: flex;
+        color: #444444;
+    }
+    .modal {
+        margin-top: 130px;
+        margin-left: 10%;
+        margin-right: 10%;
+        background-color: #ffffff;
+        padding: 20px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+        width: 80%;
+        height:350px;
+        display: block;
+    
+    }
+    .modal h2 {
+        margin-top: 0;
+        color:#444444;
+        font-size: 1rem;
+        text-align: center;
+    }
+    .modal label,
+    .modal input {
+        color: #444444;
+        margin-bottom: 15px;
+        font-size: 0.8rem;
+        text-decoration: none;
+
+    }
+    form .boton-primario{
+        margin-top: 60px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up)*/ 
+@media (min-width: 768px) {
+
+}
+
+/* Large devices (desktops, 992px and up)*/ 
+@media (min-width: 992px) { 
+
+}
+
+/* X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {}
+
+/* XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) { }
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+textarea {
+    font-weight: normal;
+}
