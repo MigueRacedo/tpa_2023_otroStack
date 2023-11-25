@@ -3,7 +3,6 @@ package models.dominio.usuario;
 import lombok.Getter;
 import lombok.Setter;
 import models.datos.RepoDeIncidentes;
-import models.datos.RepoDeNotificaciones;
 import models.dominio.converter.MedioNotificacionConverter;
 import models.dominio.converter.ModoNotificacionConverter;
 import models.dominio.entidades.Entidad;
@@ -122,13 +121,6 @@ public class Usuario extends Persistente {
     }
     public void recibirNotificacion(Notificacion notificacion) {
         this.modo.notificar(notificacion);
-    }
-    public void agregarNotificacion(Notificacion notificacion){
-        this.getNotificacionesPendientes().add(notificacion);
-    }
-    public List<Notificacion> getNotificacionesPendientes(){
-        RepoDeNotificaciones repo = new RepoDeNotificaciones();
-        return repo.notificacionesPendientesPorId(this.getId());
     }
     public void agregarServicioDeInteres(InteresServicio servicio){
         this.serviciosDeInteres.add(servicio);
