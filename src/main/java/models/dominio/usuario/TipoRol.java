@@ -1,8 +1,6 @@
 package models.dominio.usuario;
 
-import io.javalin.security.RouteRole;
-
-public enum TipoRol implements RouteRole {
+public enum TipoRol {
     ADMINISTRADOR_COMUNIDAD,
     NORMAL,
     ADMINISTRADOR,

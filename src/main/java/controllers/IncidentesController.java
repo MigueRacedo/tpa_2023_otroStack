@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/incidentes/usuario/")
@@ -19,7 +19,9 @@ public class IncidentesController {
   private IncidentesService incidentesService;
 
   @GetMapping("/{id}")
-  public List<Incidente> index(@PathVariable Long idUsuario) {
-    return this.incidentesService.getIncidentes(idUsuario);
+  public String index(@PathVariable Long idUsuario, Model model) {
+    List<Incidente> incidentes = this.incidentesService.getIncidentes(idUsuario);
+    model.addAttribute("incidentes",incidentes);
+    return "incidentes";
   }
 }
