@@ -23,11 +23,11 @@ public class CriterioCantidadAfectados extends Criterio{
     }
     return instancia;
   }
-  @Override
+  /*@Override
   protected List<Incidente> obtenerIncidentes() {
     RepoDeIncidentes repo = new RepoDeIncidentes();
     return repo.getIncidentes().stream().filter(i -> i.esDeEstaSemana() && i.esOriginal()).toList();
-  }
+  }*/
 
   @Override
   protected List<Map.Entry<Entidad, Double>> generarListado(List<Incidente> lista) {

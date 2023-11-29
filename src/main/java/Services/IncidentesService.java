@@ -13,7 +13,7 @@ public class IncidentesService {
   @Autowired
   RepoDeIncidentes repoDeIncidentes;
 
-  public List<Incidente> getIncidentes(Long idUsuario) {
-    return repoDeIncidentes.getIncidentesByUsuario(idUsuario);
+  public List<Incidente> getIncidentes() {
+    return repoDeIncidentes.findAll();
   }
 }

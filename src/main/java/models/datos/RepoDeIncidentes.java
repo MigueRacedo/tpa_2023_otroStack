@@ -7,12 +7,15 @@ import models.dominio.notificador.Notificacion;
 import models.dominio.usuario.Usuario;
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class RepoDeIncidentes extends Repo implements WithSimplePersistenceUnit {
-    public List<Incidente> getIncidentes(){
+@Repository
+public interface RepoDeIncidentes extends JpaRepository<Incidente, Long> {
+    /*public List<Incidente> getIncidentes(){
         return entityManager().createQuery("from " + Incidente.class.getName()).getResultList();
     }
     public Incidente findById(Long id) {
@@ -89,5 +92,5 @@ public class RepoDeIncidentes extends Repo implements WithSimplePersistenceUnit 
 
         List<IncidenteEnComunidad> incidentes = query.getResultList();
         return incidentes;
-    }
+    }*/
 }

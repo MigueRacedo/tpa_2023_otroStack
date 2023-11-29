@@ -21,11 +21,11 @@ public class CriterioCantidadDeIncidentes extends Criterio{
     }
     return instancia;
   }
-  @Override
+  /*@Override
   protected List<Incidente> obtenerIncidentes() {
     RepoDeIncidentes repo = new RepoDeIncidentes();
     return repo.getIncidentes().stream().filter(i -> i.esDeEstaSemana() && (i.esOriginal() || i.hayDiferenciaDe24HorasConOriginal())).toList();
-  }
+  }*/
 
   @Override
   protected List<Map.Entry<Entidad, Double>> generarListado(List<Incidente> lista) {

@@ -23,11 +23,11 @@ public class CriterioTiempoDeCierre extends Criterio {
     }
     return instancia;
   }*/
-  @Override
+  /*@Override
   public List<Incidente> obtenerIncidentes() {
     RepoDeIncidentes repo = new RepoDeIncidentes();
     return repo.getIncidentes().stream().filter(i -> i.estaResuelto() && i.esDeEstaSemana()).toList();
-  }
+  }*/
 
   @Override
   public List<Map.Entry<Entidad, Double>> generarListado(List<Incidente> lista) {

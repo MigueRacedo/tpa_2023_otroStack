@@ -112,11 +112,11 @@ public class Usuario extends Persistente {
     public Boolean esAfectado(Servicio servicio){
         return this.getServiciosDeInteres().stream().filter(i->i.getCondicion() == Condicion.AFECTADO).map(s->s.getServicio()).toList().contains(servicio);
     }
-    public void setLocalizacionActual(Localizacion localizacionActual) {
+    /*public void setLocalizacionActual(Localizacion localizacionActual) {
         RepoDeIncidentes repo = new RepoDeIncidentes();
         LocalizacionActual = localizacionActual;
         repo.buscarIncidenteCerca(this);
-    }
+    }*/
     public Boolean perteneceAAlmenosUnaComunidadDe(List<Comunidad> comunidades){
         return this.comunidades().stream().anyMatch(comunidades::contains);
     }

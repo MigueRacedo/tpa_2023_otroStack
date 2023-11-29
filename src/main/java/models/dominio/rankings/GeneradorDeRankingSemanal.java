@@ -14,10 +14,10 @@ public class GeneradorDeRankingSemanal {
     }
     return instancia;
   }
-  public Ranking generarRankingSegunCriterio(Criterio criterio){
+  /*public Ranking generarRankingSegunCriterio(Criterio criterio){
     Ranking nuevoRanking = new Ranking();
     nuevoRanking.setNombre(criterio.getNombre());
     nuevoRanking.setValorRankings(criterio.generarRanking());
     return nuevoRanking;
-  }
+  }*/
 }

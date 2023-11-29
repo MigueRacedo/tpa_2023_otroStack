@@ -59,7 +59,7 @@ public class Incidente extends Persistente {
     public Incidente(){
         this.fechaYHoraInicial = LocalDateTime.now();
     }
-    public void abrir(){
+    /*public void abrir(){
         RepoDeIncidentes repo = new RepoDeIncidentes();
         Incidente incidenteOriginal = repo.incidenteOriginal(this);
         this.setIncidenteOriginal(incidenteOriginal);
@@ -71,15 +71,15 @@ public class Incidente extends Persistente {
 
         List<Usuario> usuariosApertura = this.usuariosANotificarApertura(usuarioInicial);
         this.notificar(usuariosApertura,"Nuevo Incidente", mensajeNotificacion, this.getFechaYHoraInicial());
-    }
-    public void crearIncidenteEnComunidad(Comunidad c){
+    }*/
+    /*public void crearIncidenteEnComunidad(Comunidad c){
         IncidenteEnComunidad incidenteEnComunidad = new IncidenteEnComunidad();
         incidenteEnComunidad.setComunidad(c);
         incidenteEnComunidad.setIncidente(this);
         incidenteEnComunidad.setAbierto(true);
         this.agregarIncidenteAsociado(incidenteEnComunidad);
-    }
-    public void cerrar(Usuario usuario){
+    }*/
+    /*public void cerrar(Usuario usuario){
         RepoDeIncidentes repoDeIncidentes = new RepoDeIncidentes();
         if(fechaYHoraFinal == null){
             this.setFechaYHoraFinal(LocalDateTime.now());
@@ -92,7 +92,7 @@ public class Incidente extends Persistente {
     }
     public void agregarIncidenteAsociado(IncidenteEnComunidad i){
         this.incidentesAsociados.add(i);
-    }
+    }*/
 
     public void cerrarParaComunidadesDe(Usuario usuario){
         List<Comunidad> comunidades = usuarioInicial.comunidades().stream().filter(c -> c.getMiembros().contains(usuario)).toList();

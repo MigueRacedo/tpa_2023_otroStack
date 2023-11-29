@@ -23,6 +23,7 @@ dependencies {
     implementation("io.github.flbulgarelli:jpa-extras:1.0.0-rc1")
     implementation("javax.persistence:javax.persistence-api:2.2")
     implementation("org.projectlombok:lombok:1.18.30")
+    implementation("org.hibernate:hibernate-core:6.1.7.Final")
 
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
@@ -30,7 +31,7 @@ dependencies {
     compileOnly("org.projectlombok:lombok:1.18.30")
     annotationProcessor("org.projectlombok:lombok:1.18.30")
 
-    runtimeOnly("mysql:mysql-connector-java:8.0.17")
+    runtimeOnly("com.mysql:mysql-connector-j")
 }
 
 tasks.test {
