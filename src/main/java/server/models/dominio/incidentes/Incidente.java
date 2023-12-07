@@ -3,8 +3,6 @@ package server.models.dominio.incidentes;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import server.models.datos.RepoDeIncidentes;
-import server.models.datos.RepoDeUsuarios;
 import server.models.dominio.entidades.Establecimiento;
 import server.models.dominio.notificador.Notificacion;
 import server.models.dominio.servicios.Servicio;
@@ -36,11 +34,11 @@ public class Incidente extends Persistente {
     @JoinColumn(name = "servicio_id")
     private Servicio servicio;
     @Getter
-    @Column(name = "fechaYHoraInicial", columnDefinition = "DATETIME")
+    @Column(name = "fechaYHoraInicial")
     private LocalDateTime fechaYHoraInicial;
     @Getter
     @Setter
-    @Column(name = "fechaYHoraFinal", columnDefinition = "DATETIME", nullable = true)
+    @Column(name = "fechaYHoraFinal", nullable = true)
     private LocalDateTime fechaYHoraFinal;
     @Getter
     @Setter
@@ -95,25 +93,15 @@ public class Incidente extends Persistente {
     }*/
 
     public void cerrarParaComunidadesDe(Usuario usuario){
-        List<Comunidad> comunidades = usuarioInicial.comunidades().stream().filter(c -> c.getMiembros().contains(usuario)).toList();
-        comunidades.stream().forEach(c -> c.cerrar(this, usuario));
     }
     public List<Usuario> usuariosANotificarApertura(Usuario usuario){
-        RepoDeUsuarios repo = new RepoDeUsuarios();
-        List<Usuario> usuarios = new ArrayList<>();
-        usuarios.addAll(repo.usuariosDe(this.usuarioInicial.comunidades()));
-        usuarios.remove(usuario);
-        return usuarios.stream().filter(u->u.tieneInteresEn(this.servicio,this.establecimiento)).toList();
+        return new ArrayList<>();
     }
     public List<Usuario> usuariosANotificarCierre(Usuario usuario){
-        RepoDeUsuarios repo = new RepoDeUsuarios();
-        List<Usuario> usuarios = new ArrayList<>();
-        usuarios.addAll(repo.usuariosDe(this.usuarioInicial.comunidades().stream().filter(c -> c.getMiembros().contains(usuario)).toList()));
-        usuarios.remove(usuario);
-        return usuarios.stream().filter(u->u.tieneInteresEn(this.servicio,this.establecimiento)).toList();
+        return new ArrayList<>();
     }
     public void notificar(List<Usuario> usuarios, String asunto, String mensaje, LocalDateTime fecha){
-        usuarios.stream().forEach(u -> u.recibirNotificacion(this.crearNotificacion(asunto, mensaje, fecha, u)));
+
     }
     public List<Comunidad> comunidades(){
         return usuarioInicial.comunidades();

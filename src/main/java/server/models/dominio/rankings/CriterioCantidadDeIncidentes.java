@@ -1,9 +1,9 @@
-package models.dominio.rankings;
+package server.models.dominio.rankings;
 
 import lombok.Getter;
-import models.datos.RepoDeIncidentes;
-import models.dominio.entidades.Entidad;
-import models.dominio.incidentes.Incidente;
+import server.models.datos.RepoDeIncidentes;
+import server.models.dominio.entidades.Entidad;
+import server.models.dominio.incidentes.Incidente;
 
 import java.util.ArrayList;
 import java.util.HashMap;

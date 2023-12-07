@@ -1,10 +1,10 @@
-package models.dominio.rankings;
+package server.models.dominio.rankings;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import models.dominio.trabajos.Persistente;
+import server.models.dominio.trabajos.Persistente;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 

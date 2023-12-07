@@ -1,5 +1,6 @@
 package server.models.dominio.converter;
 
+import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 import server.models.dominio.notificador.CuandoSuceden;
 import server.models.dominio.notificador.ModoNotificacion;

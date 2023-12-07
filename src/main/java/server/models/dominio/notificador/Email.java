@@ -1,4 +1,4 @@
-package models.dominio.notificador;
+package server.models.dominio.notificador;
 
 import lombok.Setter;
 

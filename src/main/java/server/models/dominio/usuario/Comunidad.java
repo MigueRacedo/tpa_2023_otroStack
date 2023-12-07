@@ -1,14 +1,13 @@
-package models.dominio.usuario;
+package server.models.dominio.usuario;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import models.datos.RepoDeIncidentesEnComunidades;
-import models.dominio.incidentes.Incidente;
-import models.dominio.incidentes.IncidenteEnComunidad;
-import models.dominio.servicios.Servicio;
-import models.dominio.trabajos.Persistente;
+import server.models.dominio.incidentes.Incidente;
+import server.models.dominio.incidentes.IncidenteEnComunidad;
+import server.models.dominio.servicios.Servicio;
+import server.models.dominio.trabajos.Persistente;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,9 +38,8 @@ public class Comunidad extends Persistente {
         return miembros.stream().filter(u -> u.esAfectado(servicio)).toList();
     }
     public List<IncidenteEnComunidad> getIncidentes(){
-        RepoDeIncidentesEnComunidades repo = new RepoDeIncidentesEnComunidades();
-        return repo.incidentesDeComunidad(this.getId());
-        //return this.incidentes;
+
+        return new ArrayList<>();
     }
     public void cerrar(Incidente incidente, Usuario usuario){
         IncidenteEnComunidad incidenteEnComunidad = this.getIncidentes().stream()

@@ -3,20 +3,18 @@ package server.models.dominio.usuario;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import models.datos.RepoDeIncidentes;
-import models.datos.RepoDeNotificaciones;
-import models.dominio.converter.MedioNotificacionConverter;
-import models.dominio.converter.ModoNotificacionConverter;
-import models.dominio.entidades.Entidad;
-import models.dominio.entidades.Establecimiento;
-import models.dominio.georef.entidades.Localizacion;
-import models.dominio.notificador.Horario;
-import models.dominio.notificador.MedioNofiticacion;
-import models.dominio.notificador.ModoNotificacion;
-import models.dominio.notificador.Notificacion;
-import models.dominio.servicios.Servicio;
-import models.dominio.trabajos.Persistente;
-import models.dominio.validador.Validador;
+import server.models.dominio.converter.MedioNotificacionConverter;
+import server.models.dominio.converter.ModoNotificacionConverter;
+import server.models.dominio.entidades.Entidad;
+import server.models.dominio.entidades.Establecimiento;
+import server.models.dominio.georef.entidades.Localizacion;
+import server.models.dominio.notificador.Horario;
+import server.models.dominio.notificador.MedioNofiticacion;
+import server.models.dominio.notificador.ModoNotificacion;
+import server.models.dominio.notificador.Notificacion;
+import server.models.dominio.servicios.Servicio;
+import server.models.dominio.trabajos.Persistente;
+import server.models.dominio.validador.Validador;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -135,8 +133,7 @@ public class Usuario extends Persistente {
     }
 
     public List<Notificacion> getNotificacionesPendientes(){
-        RepoDeNotificaciones repo = new RepoDeNotificaciones();
-        return repo.notificacionesPendientesPorId(this.getId());
+        return new ArrayList<>();
     }
 
 }

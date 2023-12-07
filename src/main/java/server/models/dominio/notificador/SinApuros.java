@@ -1,6 +1,6 @@
-package models.dominio.notificador;
+package server.models.dominio.notificador;
 
-import models.dominio.usuario.Usuario;
+import server.models.dominio.usuario.Usuario;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;

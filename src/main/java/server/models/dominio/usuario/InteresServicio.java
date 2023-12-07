@@ -1,10 +1,10 @@
-package models.dominio.usuario;
+package server.models.dominio.usuario;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import models.dominio.servicios.Servicio;
+import server.models.dominio.servicios.Servicio;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity

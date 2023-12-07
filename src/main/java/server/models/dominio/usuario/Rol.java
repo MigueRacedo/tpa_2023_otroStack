@@ -1,10 +1,10 @@
-package models.dominio.usuario;
+package server.models.dominio.usuario;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import models.dominio.trabajos.Persistente;
+import server.models.dominio.trabajos.Persistente;
 
-import javax.persistence.*;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;

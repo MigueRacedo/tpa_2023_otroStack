@@ -1,11 +1,11 @@
-package models.dominio.servicios;
+package server.models.dominio.servicios;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import models.dominio.entidades.OrganismoDeControl;
-import models.dominio.trabajos.Persistente;
+import server.models.dominio.entidades.OrganismoDeControl;
+import server.models.dominio.trabajos.Persistente;
 
-import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

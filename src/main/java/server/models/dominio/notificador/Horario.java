@@ -1,11 +1,10 @@
-package models.dominio.notificador;
+package server.models.dominio.notificador;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import models.dominio.trabajos.Persistente;
-import models.dominio.usuario.Usuario;
-
-import javax.persistence.*;
+import server.models.dominio.trabajos.Persistente;
+import server.models.dominio.usuario.Usuario;
 import java.time.LocalTime;
 
 @Entity

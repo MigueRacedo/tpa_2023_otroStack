@@ -1,6 +1,6 @@
-package models.dominio.notificador;
+package server.models.dominio.notificador;
 
-import models.dominio.excepciones.NotificacionException;
+import server.models.dominio.excepciones.NotificacionException;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

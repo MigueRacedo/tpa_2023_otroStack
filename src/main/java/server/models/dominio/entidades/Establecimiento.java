@@ -3,8 +3,9 @@ package server.models.dominio.entidades;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import models.dominio.servicios.Servicio;
-import models.dominio.trabajos.Persistente;
+import server.models.dominio.georef.entidades.Localizacion;
+import server.models.dominio.servicios.Servicio;
+import server.models.dominio.trabajos.Persistente;
 
 import java.util.ArrayList;
 import java.util.List;

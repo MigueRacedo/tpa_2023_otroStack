@@ -1,7 +1,7 @@
-package models.dominio.validador;
+package server.models.dominio.validador;
 
-import models.dominio.excepciones.ContraseniaDebilException;
-import models.dominio.usuario.Usuario;
+import server.models.dominio.excepciones.ContraseniaDebilException;
+import server.models.dominio.usuario.Usuario;
 import org.passay.*;
 import org.passay.dictionary.Dictionary;
 import org.passay.dictionary.DictionaryBuilder;

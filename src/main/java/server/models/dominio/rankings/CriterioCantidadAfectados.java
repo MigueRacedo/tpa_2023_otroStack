@@ -1,10 +1,8 @@
-package models.dominio.rankings;
+package server.models.dominio.rankings;
 
 import lombok.Getter;
-import models.datos.RepoDeIncidentes;
-import models.datos.RepoDeUsuarios;
-import models.dominio.entidades.Entidad;
-import models.dominio.incidentes.Incidente;
+import server.models.dominio.entidades.Entidad;
+import server.models.dominio.incidentes.Incidente;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +29,7 @@ public class CriterioCantidadAfectados extends Criterio{
 
   @Override
   protected List<Map.Entry<Entidad, Double>> generarListado(List<Incidente> lista) {
-    RepoDeUsuarios repo = new RepoDeUsuarios();
+    /*RepoDeUsuarios repo = new RepoDeUsuarios();
     Map<Entidad, Double> cantidadAfectadosPorIncidente = new HashMap<>();
 
     for (Incidente incidente : lista) {
@@ -39,6 +37,7 @@ public class CriterioCantidadAfectados extends Criterio{
       Integer afectados = repo.getUsuarios().stream().filter(u->u.esAfectado(incidente.getServicio()) && u.tieneInteresEn(incidente.getServicio(), incidente.getEstablecimiento())).toList().size();
       cantidadAfectadosPorIncidente.put(entidad, cantidadAfectadosPorIncidente.getOrDefault(entidad, 0.0) + afectados);
     }
-    return new ArrayList<>(cantidadAfectadosPorIncidente.entrySet());
+    return new ArrayList<>(cantidadAfectadosPorIncidente.entrySet());*/
+    return new ArrayList<>();
   }
 }

@@ -1,18 +1,17 @@
-package models.dominio.incidentes;
+package server.models.dominio.incidentes;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import models.datos.RepoDeIncidentesEnComunidades;
-import models.dominio.trabajos.Persistente;
-import models.dominio.usuario.Comunidad;
-import models.dominio.usuario.Usuario;
+import server.models.dominio.trabajos.Persistente;
+import server.models.dominio.usuario.Comunidad;
+import server.models.dominio.usuario.Usuario;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
 @Entity
-@Table(name = "indicente_En_Comunidad")
+@Table(name = "IncidenteEnComunidad")
 //@IdClass(IncidenteEnComunidad.class)
 public class IncidenteEnComunidad extends Persistente{
     //@Id
@@ -31,7 +30,7 @@ public class IncidenteEnComunidad extends Persistente{
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuarioFinal;
     @Setter
-    @Column(name = "fechaYHoraFinal", columnDefinition = "DATETIME", nullable = true)
+    @Column(name = "fechaYHoraFinal", nullable = true)
     private LocalDateTime fechaYHoraFinal;
     public IncidenteEnComunidad(){
         this.abierto = true;
@@ -42,7 +41,6 @@ public class IncidenteEnComunidad extends Persistente{
         this.abierto = abierto;
     }
     public void cerrar(Usuario usuario){
-        RepoDeIncidentesEnComunidades repoDeIncidentesEnComunidades = new RepoDeIncidentesEnComunidades();
         this.setAbierto(false);
         this.fechaYHoraFinal = LocalDateTime.now();
         this.usuarioFinal = usuario;

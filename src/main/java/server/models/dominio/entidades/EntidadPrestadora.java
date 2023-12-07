@@ -1,5 +1,6 @@
 package server.models.dominio.entidades;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import server.models.dominio.trabajos.Persistente;

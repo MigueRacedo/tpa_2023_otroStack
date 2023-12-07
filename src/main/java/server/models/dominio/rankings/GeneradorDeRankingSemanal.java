@@ -1,4 +1,4 @@
-package models.dominio.rankings;
+package server.models.dominio.rankings;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,7 +1,8 @@
-package models.dominio.servicios;
+package server.models.dominio.servicios;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 

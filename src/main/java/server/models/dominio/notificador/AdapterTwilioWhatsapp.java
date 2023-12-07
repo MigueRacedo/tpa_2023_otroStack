@@ -1,9 +1,9 @@
-package models.dominio.notificador;
+package server.models.dominio.notificador;
 
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
-import models.dominio.excepciones.NotificacionException;
+import server.models.dominio.excepciones.NotificacionException;
 
 public class AdapterTwilioWhatsapp implements AdapterWhatsapp{
     private static final PhoneNumber from = new PhoneNumber("whatsapp:+5491155136689");
