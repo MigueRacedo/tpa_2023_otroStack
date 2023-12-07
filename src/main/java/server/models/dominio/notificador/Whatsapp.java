@@ -1,4 +1,4 @@
-package models.dominio.notificador;
+package server.models.dominio.notificador;
 public class Whatsapp implements MedioNofiticacion {
   private AdapterWhatsapp adapterWhatsapp = new AdapterTwilioWhatsapp();
   @Override

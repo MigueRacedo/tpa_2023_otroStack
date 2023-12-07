@@ -1,4 +1,4 @@
-package models.dominio.validador;
+package server.models.dominio.validador;
 
 import org.passay.MatchBehavior;
 import org.passay.PasswordData;

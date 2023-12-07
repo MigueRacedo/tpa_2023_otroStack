@@ -1,26 +1,34 @@
-package models.dominio.entidades;
-
+package server.models.dominio.entidades;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import models.dominio.servicios.Servicio;
-import models.dominio.trabajos.Persistente;
+import server.models.dominio.servicios.Servicio;
+import server.models.dominio.trabajos.Persistente;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+
 @Entity
+//@Access(AccessType.PROPERTY)
+
 @Table(name = "Establecimiento")
 public class Establecimiento extends Persistente {
     @Setter
     @Getter
     @Column(name = "nombre")
     private String nombre;
-    @Setter
-    @Getter
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "localizacion_id")
-    private models.dominio.georef.entidades.Localizacion Localizacion;
     @Getter
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(
@@ -41,7 +49,5 @@ public class Establecimiento extends Persistente {
     public void agregarServicio(Servicio unServicio) {
         this.listaDeServicios.add(unServicio);
     }
-    public models.dominio.georef.entidades.Localizacion getLocalizacion(){
-        return this.Localizacion;
-    }
+
 }

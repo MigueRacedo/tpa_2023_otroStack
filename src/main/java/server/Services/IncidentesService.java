@@ -1,7 +1,7 @@
 package server.Services;
 
-import models.datos.RepoDeIncidentes;
-import models.dominio.incidentes.Incidente;
+import server.models.datos.RepoDeIncidentes;
+import server.models.dominio.incidentes.Incidente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

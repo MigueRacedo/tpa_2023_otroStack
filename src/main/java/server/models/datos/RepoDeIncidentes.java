@@ -1,10 +1,9 @@
-package models.datos;
+package server.models.datos;
 
-import io.github.flbulgarelli.jpa.extras.simple.WithSimplePersistenceUnit;
-import models.dominio.incidentes.Incidente;
-import models.dominio.incidentes.IncidenteEnComunidad;
-import models.dominio.notificador.Notificacion;
-import models.dominio.usuario.Usuario;
+import server.models.dominio.incidentes.Incidente;
+import server.models.dominio.incidentes.IncidenteEnComunidad;
+import server.models.dominio.notificador.Notificacion;
+import server.models.dominio.usuario.Usuario;
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
 import org.springframework.data.jpa.repository.JpaRepository;

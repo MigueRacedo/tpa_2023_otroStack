@@ -1,11 +1,11 @@
-package models.dominio.converter;
+package server.models.dominio.converter;
 
-import models.dominio.notificador.CuandoSuceden;
-import models.dominio.notificador.ModoNotificacion;
-import models.dominio.notificador.SinApuros;
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
+import server.models.dominio.notificador.CuandoSuceden;
+import server.models.dominio.notificador.ModoNotificacion;
+import server.models.dominio.notificador.SinApuros;
 
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
 
 @Converter(autoApply = true)
 public class ModoNotificacionConverter  implements AttributeConverter<ModoNotificacion, String> {

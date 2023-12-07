@@ -1,19 +1,29 @@
-package models.dominio.usuario;
+package server.models.dominio.usuario;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import models.datos.RepoDeIncidentesEnComunidades;
-import models.dominio.incidentes.Incidente;
-import models.dominio.incidentes.IncidenteEnComunidad;
-import models.dominio.servicios.Servicio;
-import models.dominio.trabajos.Persistente;
+import server.models.dominio.incidentes.Incidente;
+import server.models.dominio.incidentes.IncidenteEnComunidad;
+import server.models.dominio.servicios.Servicio;
+import server.models.dominio.trabajos.Persistente;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+
 @Entity
+//@Access(AccessType.PROPERTY)
+@Getter
 @Table(name = "Comunidad")
 public class Comunidad extends Persistente {
     @Setter
@@ -35,21 +45,19 @@ public class Comunidad extends Persistente {
         this.miembros.add(unMiembro);
     }
     public List<Usuario> getMiembros(){ return miembros;}
-    public List<Usuario> getAfectadosPor(Servicio servicio){
-        return miembros.stream().filter(u -> u.esAfectado(servicio)).toList();
-    }
-    public List<IncidenteEnComunidad> getIncidentes(){
+
+    /*public List<IncidenteEnComunidad> getIncidentes(){
         RepoDeIncidentesEnComunidades repo = new RepoDeIncidentesEnComunidades();
         return repo.incidentesDeComunidad(this.getId());
         //return this.incidentes;
-    }
-    public void cerrar(Incidente incidente, Usuario usuario){
+    }*/
+    /*public void cerrar(Incidente incidente, Usuario usuario){
         IncidenteEnComunidad incidenteEnComunidad = this.getIncidentes().stream()
                 .filter(i -> i.getIncidente().equals(incidente)) //TODO comparar Ids
                 .findFirst().orElseThrow(()->new RuntimeException("No encuentra el incidente"));//orElse(null);
 
         incidenteEnComunidad.cerrar(usuario);
-    }
+    }*/
     public void eliminarMiembro(Usuario usuario){
         this.miembros.remove(usuario);
     }

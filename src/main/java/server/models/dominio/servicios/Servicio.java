@@ -1,13 +1,29 @@
-package models.dominio.servicios;
+package server.models.dominio.servicios;
+import jakarta.persistence.*;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import models.dominio.entidades.OrganismoDeControl;
-import models.dominio.trabajos.Persistente;
+import server.models.dominio.entidades.OrganismoDeControl;
+import server.models.dominio.trabajos.Persistente;
 
-import javax.persistence.*;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.CascadeType;
 
 @Entity
+//@Access(AccessType.PROPERTY)
+
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_servicio", discriminatorType = DiscriminatorType.STRING)
 @Table(name = "servicio")

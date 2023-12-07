@@ -1,14 +1,13 @@
-package models.dominio.usuario;
+package server.models.dominio.usuario;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import models.dominio.trabajos.Persistente;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import server.models.dominio.trabajos.Persistente;
 
 @Entity
+//@Access(AccessType.PROPERTY)
+
 @Table(name = "permiso")
 @Setter
 @Getter

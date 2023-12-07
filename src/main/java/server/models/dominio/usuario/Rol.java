@@ -1,15 +1,27 @@
-package models.dominio.usuario;
+package server.models.dominio.usuario;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import models.dominio.trabajos.Persistente;
+import server.models.dominio.trabajos.Persistente;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.CascadeType;
+
 @Entity
+//@Access(AccessType.PROPERTY)
+
 @Table(name = "rol")
 @Getter
 @Setter

@@ -1,28 +1,38 @@
-package models.dominio.usuario;
+package server.models.dominio.usuario;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import models.datos.RepoDeIncidentes;
-import models.datos.RepoDeNotificaciones;
-import models.dominio.converter.MedioNotificacionConverter;
-import models.dominio.converter.ModoNotificacionConverter;
-import models.dominio.entidades.Entidad;
-import models.dominio.entidades.Establecimiento;
-import models.dominio.georef.entidades.Localizacion;
-import models.dominio.notificador.Horario;
-import models.dominio.notificador.MedioNofiticacion;
-import models.dominio.notificador.ModoNotificacion;
-import models.dominio.notificador.Notificacion;
-import models.dominio.servicios.Servicio;
-import models.dominio.trabajos.Persistente;
-import models.dominio.validador.Validador;
+import server.models.dominio.converter.MedioNotificacionConverter;
+import server.models.dominio.converter.ModoNotificacionConverter;
+import server.models.dominio.entidades.Entidad;
+import server.models.dominio.notificador.Horario;
+import server.models.dominio.notificador.MedioNofiticacion;
+import server.models.dominio.notificador.ModoNotificacion;
+import server.models.dominio.notificador.Notificacion;
+import server.models.dominio.trabajos.Persistente;
+import server.models.dominio.validador.Validador;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
 
 @Entity
+//@Access(AccessType.PROPERTY)
+
 @Table(name = "Usuario")
 public class Usuario extends Persistente {
 
@@ -31,15 +41,7 @@ public class Usuario extends Persistente {
     private String username;
     @Column(name = "contraseña")
     private String contrasenia;
-    @Getter
-    @Setter
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "loc_interes")
-    private Localizacion LocalizacionDeInteres;
-    @Getter
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "loc_actual")
-    private Localizacion LocalizacionActual;
+
     @Getter
     @Column(name="fecha_contrasenia")
     private LocalDateTime ultimoCambioContrasenia;
@@ -52,10 +54,6 @@ public class Usuario extends Persistente {
             inverseJoinColumns = @JoinColumn(name = "id_entidad")
     )
     private List<Entidad> entidadesDeInteres = new ArrayList<>();
-    @Getter
-    @OneToMany(mappedBy = "usuario", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-    private List<InteresServicio> serviciosDeInteres = new ArrayList<>();
-
     @Getter
     @Setter
     @Convert(converter = MedioNotificacionConverter.class)
@@ -97,21 +95,8 @@ public class Usuario extends Persistente {
         return this.comunidades;
     }
     public List<Entidad> getEntidadesDeInteres(){return this.entidadesDeInteres;}
-    public Boolean tieneInteresEn(Servicio servicio, Establecimiento establecimiento) {
-        //try {
-            System.out.println(this.getUsername()+" - "+servicio.getNombre()+" - "+establecimiento.getNombre());
-            return getEntidadesDeInteres().stream().map(e->e.getId()).toList().contains(establecimiento.getEntidad().getId())
-                    && (getServiciosDeInteres().stream().map(i -> i.getServicio().getId()).toList().contains(servicio.getId()));
-                    //&& establecimiento.getLocalizacion().esIgualA(this.LocalizacionDeInteres);
 
-        //}
-        //catch (Exception e){
-         //   return false;
-        //}
-    }
-    public Boolean esAfectado(Servicio servicio){
-        return this.getServiciosDeInteres().stream().filter(i->i.getCondicion() == Condicion.AFECTADO).map(s->s.getServicio()).toList().contains(servicio);
-    }
+
     /*public void setLocalizacionActual(Localizacion localizacionActual) {
         RepoDeIncidentes repo = new RepoDeIncidentes();
         LocalizacionActual = localizacionActual;
@@ -123,20 +108,17 @@ public class Usuario extends Persistente {
     public void recibirNotificacion(Notificacion notificacion) {
         this.modo.notificar(notificacion);
     }
-    public void agregarServicioDeInteres(InteresServicio servicio){
-        this.serviciosDeInteres.add(servicio);
-    }
     public void agregarEntidadDeInteres(Entidad e){
         this.entidadesDeInteres.add(e);
     }
 
-    public void agregarNotificacion(Notificacion notificacion){
+   /* public void agregarNotificacion(Notificacion notificacion){
         this.getNotificacionesPendientes().add(notificacion);
-    }
+    }*/
 
-    public List<Notificacion> getNotificacionesPendientes(){
+    /*public List<Notificacion> getNotificacionesPendientes(){
         RepoDeNotificaciones repo = new RepoDeNotificaciones();
         return repo.notificacionesPendientesPorId(this.getId());
-    }
+    }*/
 
 }

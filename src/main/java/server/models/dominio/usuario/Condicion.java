@@ -1,4 +1,4 @@
-package models.dominio.usuario;
+package server.models.dominio.usuario;
 
 public enum Condicion {
     AFECTADO,

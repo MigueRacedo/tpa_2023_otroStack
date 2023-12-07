@@ -1,60 +1,64 @@
-package models.dominio.incidentes;
-
+package server.models.dominio.incidentes;
+import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import models.datos.RepoDeIncidentes;
-import models.datos.RepoDeUsuarios;
-import models.dominio.entidades.Establecimiento;
-import models.dominio.notificador.Notificacion;
-import models.dominio.servicios.Servicio;
-import models.dominio.trabajos.Persistente;
-import models.dominio.usuario.Comunidad;
-import models.dominio.usuario.Usuario;
+import server.models.dominio.entidades.Establecimiento;
+import server.models.dominio.notificador.Notificacion;
+import server.models.dominio.servicios.Servicio;
+import server.models.dominio.trabajos.Persistente;
+import server.models.dominio.usuario.Comunidad;
+import server.models.dominio.usuario.Usuario;
 
-import javax.persistence.*;
+
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.CascadeType;
 
 @Entity
+//@Access(AccessType.PROPERTY)
+
+@Getter
 @Table(name = "Incidente")
 public class Incidente extends Persistente {
-    @Getter
     @Setter
     @Column(name = "descripcion")
     private String descripcion;
-    @Getter
     @Setter
     @ManyToOne
     @JoinColumn(name = "establecimiento_id")
     private Establecimiento establecimiento;
-    @Getter
     @Setter
     @ManyToOne
     @JoinColumn(name = "servicio_id")
     private Servicio servicio;
-    @Getter
     @Column(name = "fechaYHoraInicial", columnDefinition = "DATETIME")
     private LocalDateTime fechaYHoraInicial;
-    @Getter
     @Setter
     @Column(name = "fechaYHoraFinal", columnDefinition = "DATETIME", nullable = true)
     private LocalDateTime fechaYHoraFinal;
-    @Getter
     @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuarioInicial;
-    @Getter
     @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "incidente_original", referencedColumnName = "id")
     private Incidente incidenteOriginal;
-    @Getter
     @OneToMany(mappedBy = "incidente", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<IncidenteEnComunidad> incidentesAsociados = new ArrayList<>();
+    @Id
+    private Long id;
 
     public Incidente(){
         this.fechaYHoraInicial = LocalDateTime.now();
@@ -94,7 +98,7 @@ public class Incidente extends Persistente {
         this.incidentesAsociados.add(i);
     }*/
 
-    public void cerrarParaComunidadesDe(Usuario usuario){
+    /*public void cerrarParaComunidadesDe(Usuario usuario){
         List<Comunidad> comunidades = usuarioInicial.comunidades().stream().filter(c -> c.getMiembros().contains(usuario)).toList();
         comunidades.stream().forEach(c -> c.cerrar(this, usuario));
     }
@@ -114,7 +118,7 @@ public class Incidente extends Persistente {
     }
     public void notificar(List<Usuario> usuarios, String asunto, String mensaje, LocalDateTime fecha){
         usuarios.stream().forEach(u -> u.recibirNotificacion(this.crearNotificacion(asunto, mensaje, fecha, u)));
-    }
+    }*/
     public List<Comunidad> comunidades(){
         return usuarioInicial.comunidades();
     }
@@ -135,22 +139,10 @@ public class Incidente extends Persistente {
     public Boolean hayDiferenciaDe24HorasConOriginal() {
         return ChronoUnit.HOURS.between(this.fechaYHoraInicial, this.incidenteOriginal.getFechaYHoraInicial()) >= 24;
     }
-    public Boolean afectaA(Usuario usuario){
+    /*public Boolean afectaA(Usuario usuario){
         return usuario.comunidades().stream().anyMatch(c->this.comunidades().contains(c));
-    }
+    }*/
 
-    public LocalDateTime getFechaYHoraInicial() {
-        return fechaYHoraInicial;
-    }
-    public LocalDateTime getFechaYHoraFinal() {
-        return fechaYHoraFinal;
-    }
-    public Servicio getServicio() {
-        return servicio;
-    }
-    public Establecimiento getEstablecimiento() {
-        return establecimiento;
-    }
     public void setFechaYHoraFinal(LocalDateTime fechaYhora){ this.fechaYHoraFinal = fechaYhora;}
     public Notificacion crearNotificacion(String asunto, String mensaje, LocalDateTime fechaYhora, Usuario usuario){
         Notificacion noti = new Notificacion();
@@ -159,5 +151,13 @@ public class Incidente extends Persistente {
         noti.setFecha(fechaYhora);
         noti.setDestinatario(usuario);
         return noti;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

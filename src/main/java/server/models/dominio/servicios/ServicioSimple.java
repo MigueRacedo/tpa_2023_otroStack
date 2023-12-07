@@ -1,9 +1,13 @@
-package models.dominio.servicios;
+package server.models.dominio.servicios;
+import jakarta.persistence.*;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
+import jakarta.persistence.CascadeType;
 
 @Entity
+//@Access(AccessType.PROPERTY)
+
 @DiscriminatorValue("simple")
 public class ServicioSimple extends Servicio {
 
