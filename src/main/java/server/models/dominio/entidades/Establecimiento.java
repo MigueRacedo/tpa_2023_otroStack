@@ -1,11 +1,11 @@
-package models.dominio.entidades;
+package server.models.dominio.entidades;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import models.dominio.servicios.Servicio;
 import models.dominio.trabajos.Persistente;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class Establecimiento extends Persistente {
     @Getter
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "localizacion_id")
-    private models.dominio.georef.entidades.Localizacion Localizacion;
+    private Localizacion localizacion;
     @Getter
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(
@@ -38,10 +38,5 @@ public class Establecimiento extends Persistente {
     public Establecimiento(){
         this.listaDeServicios = new ArrayList<>();
     }
-    public void agregarServicio(Servicio unServicio) {
-        this.listaDeServicios.add(unServicio);
-    }
-    public models.dominio.georef.entidades.Localizacion getLocalizacion(){
-        return this.Localizacion;
-    }
+
 }

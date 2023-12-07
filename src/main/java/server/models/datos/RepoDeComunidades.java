@@ -1,16 +1,19 @@
-package models.datos;
+package server.models.datos;
 
 import models.dominio.usuario.Comunidad;
-import models.dominio.usuario.Usuario;
+import server.models.dominio.usuario.Comunidad;
+import server.models.dominio.usuario.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class RepoDeComunidades extends Repo {
+public class RepoDeComunidades {
     public List<Comunidad> getComunidades(){
-        return entityManager().createQuery("from " + Comunidad.class.getName()).getResultList();
+        //return entityManager().createQuery("from " + Comunidad.class.getName()).getResultList();
+        return new ArrayList<Comunidad>();
     }
     public List<Comunidad> getComunidadesParaElegir(Long id) {
-
+    /*
         RepoDeUsuarios repoDeUsuarios = new RepoDeUsuarios();
         Usuario usuario = repoDeUsuarios.findById(id);
         List<Long> ids = usuario.comunidades().stream().map(c -> c.getId()).toList();
@@ -21,7 +24,8 @@ public class RepoDeComunidades extends Repo {
                 .createQuery("from "+Comunidad.class.getName()+" c WHERE c.id NOT IN :lista")
                 .setParameter("lista",ids)
                 .getResultList();
-
+*/
+        return new ArrayList<Comunidad>();
     }
     /*public List<Comunidad> buscarComunidadesDeUnUsuario(Long usuario_id){
         return (List<Comunidad>) entityManager()
@@ -32,15 +36,17 @@ public class RepoDeComunidades extends Repo {
                 .getResultList();
     }*/
     public List<Comunidad> buscarComunidadesDeUnUsuario(Long usuario_id){
-        return (List<Comunidad>) entityManager()
+        /*return (List<Comunidad>) entityManager()
                 .createQuery("FROM "+Comunidad.class.getName()+" c " +
                         "JOIN miembros m ON (c.id = m.comunidad_id) " +
                         "WHERE m.usuario_id = :usuario_id")
                 .setParameter("usuario_id", usuario_id)
-                .getResultList();
+                .getResultList();*/
+        return new ArrayList<Comunidad>();
     }
 
     public Comunidad findById(Long id) {
-        return entityManager().find(Comunidad.class, id);
+        //return entityManager().find(Comunidad.class, id);
+        return new Comunidad();
     }
 }

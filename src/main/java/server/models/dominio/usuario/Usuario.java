@@ -1,5 +1,6 @@
-package models.dominio.usuario;
+package server.models.dominio.usuario;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import models.datos.RepoDeIncidentes;
@@ -17,7 +18,6 @@ import models.dominio.servicios.Servicio;
 import models.dominio.trabajos.Persistente;
 import models.dominio.validador.Validador;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

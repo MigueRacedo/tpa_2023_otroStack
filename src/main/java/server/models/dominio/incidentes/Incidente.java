@@ -1,17 +1,17 @@
-package models.dominio.incidentes;
+package server.models.dominio.incidentes;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import models.datos.RepoDeIncidentes;
-import models.datos.RepoDeUsuarios;
-import models.dominio.entidades.Establecimiento;
-import models.dominio.notificador.Notificacion;
-import models.dominio.servicios.Servicio;
-import models.dominio.trabajos.Persistente;
-import models.dominio.usuario.Comunidad;
-import models.dominio.usuario.Usuario;
+import server.models.datos.RepoDeIncidentes;
+import server.models.datos.RepoDeUsuarios;
+import server.models.dominio.entidades.Establecimiento;
+import server.models.dominio.notificador.Notificacion;
+import server.models.dominio.servicios.Servicio;
+import server.models.dominio.trabajos.Persistente;
+import server.models.dominio.usuario.Comunidad;
+import server.models.dominio.usuario.Usuario;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;

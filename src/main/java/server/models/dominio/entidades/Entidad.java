@@ -1,5 +1,6 @@
-package models.dominio.entidades;
+package server.models.dominio.entidades;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import models.dominio.trabajos.Persistente;
@@ -24,15 +25,7 @@ public class Entidad extends Persistente {
     @Getter
     @OneToOne(fetch = FetchType.LAZY, cascade ={CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "localizacion_id")
-    private models.dominio.georef.entidades.Localizacion Localizacion;
+    private Localizacion localizacion;
     @OneToMany(mappedBy = "entidad", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<Establecimiento> establecimientos = new ArrayList<>();
-    public Entidad() {
-        this.nombre = nombre;
-    }
-    public void setNombre(String nombre){ this.nombre = nombre;}
-    public void agregarEstablecimiento(Establecimiento establecimiento){
-        this.establecimientos.add(establecimiento);
-        establecimiento.setEntidad(this);
-    }
 }

@@ -1,11 +1,11 @@
-package models.dominio.converter;
+package server.models.dominio.converter;
 
-import models.dominio.notificador.Email;
-import models.dominio.notificador.MedioNofiticacion;
-import models.dominio.notificador.Whatsapp;
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
+import server.models.dominio.notificador.Email;
+import server.models.dominio.notificador.MedioNofiticacion;
+import server.models.dominio.notificador.Whatsapp;
 
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
 
 @Converter(autoApply = true)
 public class MedioNotificacionConverter  implements AttributeConverter<MedioNofiticacion, String> {

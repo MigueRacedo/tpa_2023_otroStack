@@ -1,10 +1,9 @@
-package models.dominio.entidades;
+package server.models.dominio.entidades;
 
 import lombok.Getter;
 import lombok.Setter;
-import models.dominio.trabajos.Persistente;
+import server.models.dominio.trabajos.Persistente;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 

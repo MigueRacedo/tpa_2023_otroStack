@@ -1,4 +1,4 @@
-package models.dominio.excepciones;
+package server.models.dominio.excepciones;
 
 public class NotificacionException extends RuntimeException {
 
