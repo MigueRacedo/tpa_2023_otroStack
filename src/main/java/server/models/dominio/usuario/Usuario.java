@@ -47,6 +47,7 @@ public class Usuario extends Persistente {
     private LocalDateTime ultimoCambioContrasenia;
     @ManyToMany(mappedBy = "miembros", fetch = FetchType.LAZY)
     private List<Comunidad> comunidades = new ArrayList<>();
+    @Getter
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}/*, fetch = FetchType.LAZY*/)
     @JoinTable(
             name = "entidades_de_interes",
@@ -94,14 +95,7 @@ public class Usuario extends Persistente {
     public List<Comunidad> comunidades(){
         return this.comunidades;
     }
-    public List<Entidad> getEntidadesDeInteres(){return this.entidadesDeInteres;}
 
-
-    /*public void setLocalizacionActual(Localizacion localizacionActual) {
-        RepoDeIncidentes repo = new RepoDeIncidentes();
-        LocalizacionActual = localizacionActual;
-        repo.buscarIncidenteCerca(this);
-    }*/
     public Boolean perteneceAAlmenosUnaComunidadDe(List<Comunidad> comunidades){
         return this.comunidades().stream().anyMatch(comunidades::contains);
     }
@@ -111,14 +105,5 @@ public class Usuario extends Persistente {
     public void agregarEntidadDeInteres(Entidad e){
         this.entidadesDeInteres.add(e);
     }
-
-   /* public void agregarNotificacion(Notificacion notificacion){
-        this.getNotificacionesPendientes().add(notificacion);
-    }*/
-
-    /*public List<Notificacion> getNotificacionesPendientes(){
-        RepoDeNotificaciones repo = new RepoDeNotificaciones();
-        return repo.notificacionesPendientesPorId(this.getId());
-    }*/
 
 }

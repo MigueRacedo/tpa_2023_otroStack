@@ -18,7 +18,7 @@ public class IncidentesController {
   @GetMapping("/incidentes")
   public String index(Model model) {
     List<Incidente> incidentes = this.incidentesService.getIncidentes();
-    model.addAttribute("incidentes",incidentes);
+    model.addAttribute("lista_incidentes",incidentes);
     return "incidentes";
   }
 }

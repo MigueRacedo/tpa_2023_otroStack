@@ -21,10 +21,6 @@ import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.persistence.Access;
-import jakarta.persistence.AccessType;
-import jakarta.persistence.CascadeType;
-
 @Entity
 //@Access(AccessType.PROPERTY)
 
@@ -42,10 +38,9 @@ public class Incidente extends Persistente {
     @ManyToOne
     @JoinColumn(name = "servicio_id")
     private Servicio servicio;
-    @Column(name = "fechaYHoraInicial", columnDefinition = "DATETIME")
+    @Column(name = "fechaYHorainicial")
     private LocalDateTime fechaYHoraInicial;
-    @Setter
-    @Column(name = "fechaYHoraFinal", columnDefinition = "DATETIME", nullable = true)
+    @Column(name = "fechaYHorafinal")
     private LocalDateTime fechaYHoraFinal;
     @Setter
     @ManyToOne(fetch = FetchType.LAZY)

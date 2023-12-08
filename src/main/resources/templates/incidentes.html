@@ -32,8 +32,8 @@
 </header>
 <main>
     <div class="containerIncidentes">
-        <th:block th:if="${incidentes}">
-            <th:each var="incidente" th:each="${incidentes}">
+        <th:block th:if="${lista_incidentes}">
+            <th:each var="incidente" th:each="incidente:${lista_incidentes}">
                 <div class="incidente">
                     <img th:src="'/img/' + ${incidente.servicio.imagen}" alt="Incidente en escaleras">
                     <div class="incidente-detalles">
@@ -43,7 +43,7 @@
                 </div>
             </th:each>
         </th:block>
-        <th:block th:unless="${incidentes}">
+        <th:block th:unless="${lista_incidentes}">
             <div class="vacio">
                 <img src="/img/correcto.png" width="300px" height="300px">
                 <a>No hay incidentes registrados</a>

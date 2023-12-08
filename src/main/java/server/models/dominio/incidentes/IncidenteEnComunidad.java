@@ -1,29 +1,19 @@
 package server.models.dominio.incidentes;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import server.models.datos.*;
 import server.models.dominio.trabajos.Persistente;
 import server.models.dominio.usuario.Comunidad;
 import server.models.dominio.usuario.Usuario;
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import jakarta.persistence.Access;
-import jakarta.persistence.AccessType;
-import jakarta.persistence.CascadeType;
 
 @Entity
 //@Access(AccessType.PROPERTY)
 
 @Getter
-@Table(name = "indicente_En_Comunidad")
+@Table(name = "IncidenteEnComunidad")
 //@IdClass(IncidenteEnComunidad.class)
 public class IncidenteEnComunidad extends Persistente{
     //@Id
@@ -42,7 +32,7 @@ public class IncidenteEnComunidad extends Persistente{
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuarioFinal;
     @Setter
-    @Column(name = "fechaYHoraFinal", columnDefinition = "DATETIME", nullable = true)
+    @Column(name = "fechaYHoraFinal", nullable = true)
     private LocalDateTime fechaYHoraFinal;
     public IncidenteEnComunidad(){
         this.abierto = true;
